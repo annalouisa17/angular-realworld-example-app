@@ -61,12 +61,6 @@ describe('Test with backend', () => {
 
     it.only('delete a new article in a global feed', () => {
 
-        const userCredentials = {
-            "user": {
-                "email": "anna@gmail.com",
-                "password": "testpass"
-            }
-        }
         const bodyRequest = {
             "article": {
                 "tagList": [],
@@ -76,9 +70,8 @@ describe('Test with backend', () => {
             }
         }
         //make a request to the API
-        cy.request('POST', 'https://conduit.productionready.io/api/users/login', userCredentials)
-            .its('body').then(body => {
-                const token = body.user.token
+        //uses the token for headless authentication
+        cy.get('@token').then(token => {
 
                 cy.request({
                     url: 'https://conduit.productionready.io/api/articles/',
