@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="11.2040" tests="4" failures="0">
+  <testsuite name="Root Suite" timestamp="2020-07-01T14:53:08" tests="0" file="cypress/integration/firstTest.spec.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="Test with backend" timestamp="2020-07-01T14:53:08" tests="4" time="11.2040" failures="0">
+    <testcase name="Test with backend verify correct request and response" time="5.8710" classname="verify correct request and response">
+    </testcase>
+    <testcase name="Test with backend should give tags with routing objects" time="1.2350" classname="should give tags with routing objects">
+    </testcase>
+    <testcase name="Test with backend verify global feed likes count" time="1.3440" classname="verify global feed likes count">
+    </testcase>
+    <testcase name="Test with backend delete a new article in a global feed" time="2.7540" classname="delete a new article in a global feed">
+    </testcase>
+  </testsuite>
+</testsuites>
