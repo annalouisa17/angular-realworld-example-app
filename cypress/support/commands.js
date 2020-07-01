@@ -28,13 +28,13 @@ Cypress.Commands.add('loginToApplication', ()=> {
 
     const userCredentials = {
         "user": {
-            "email": "anna@gmail.com",
-            "password": "testpass"
+            "email": Cypress.env('username'),
+            "password": Cypress.env('password')
         }
     }
     //browser authenticated before we open the home page
     // save the token into the cypress alias to be used in other places
-    cy.request('POST', 'https://conduit.productionready.io/api/users/login', userCredentials)
+    cy.request('POST', Cypress.env('apiUrl')+'api/users/login', userCredentials)
         .its('body').then( body => {
             const token = body.user.token
             cy.wrap(token).as('token')

@@ -8,7 +8,7 @@ describe('Test with backend', () => {
         cy.loginToApplication()
     })
 
-    it.skip('verify correct request and response', () => {
+    it('verify correct request and response', () => {
 
         //create a cypress server
         cy.server()
@@ -59,7 +59,7 @@ describe('Test with backend', () => {
             .should('contain', '6')
     })
 
-    it.only('delete a new article in a global feed', () => {
+    it('delete a new article in a global feed', () => {
 
         const bodyRequest = {
             "article": {
@@ -74,7 +74,7 @@ describe('Test with backend', () => {
         cy.get('@token').then(token => {
 
                 cy.request({
-                    url: 'https://conduit.productionready.io/api/articles/',
+                    url: Cypress.env('apiUrl')+'api/articles/',
                     headers: {'Authorization': 'Token '+token},
                     method: 'POST',
                     body: bodyRequest
@@ -87,7 +87,7 @@ describe('Test with backend', () => {
                 cy.get('.article-actions').contains('Delete Article').click()
 
                 cy.request({
-                    url: 'https://conduit.productionready.io/api/articles?limit=10&offset=0',
+                    url: Cypress.env('apiUrl')+'api/articles?limit=10&offset=0',
                     headers: {'Authorization': 'Token '+token},
                     method: 'GET'
                 }).its('body').then(body => {

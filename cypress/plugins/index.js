@@ -15,8 +15,24 @@
 /**
  * @type {Cypress.PluginConfig}
  */
+
+const fs = require('fs-extra')
+const path = require('path')
+
+function getConfigurationByFile (file) {
+  const pathToConfigFile = path.resolve('cypress', 'config', `${file}.json`)
+  if( !fs.existsSync(pathToConfigFile)) {
+    return {};
+  }
+
+  return fs.readJson(pathToConfigFile)
+}
 module.exports = (on, config) => {
   require('cypress-plugin-retries/lib/plugin')(on)
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
+
+  const file = config.env.configFile  
+
+  return getConfigurationByFile(file)
 }
