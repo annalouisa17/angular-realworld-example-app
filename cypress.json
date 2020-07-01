@@ -3,5 +3,8 @@
     "ignoreTestFiles": "**/examples/*",
     "viewportHeight": 1080,
     "viewportWidth": 1920,
-    "video": false
+    "video": false,
+    "env": {
+        "RETRIES": 2
+    }
 }
